@@ -2,6 +2,8 @@ package mooc.vandy.java4android.birthdayprob.logic;
 
 import mooc.vandy.java4android.birthdayprob.ui.OutputInterface;
 
+import java.util.Random;
+
 /**
  * This is where the logic of this App is centralized for this assignment.
  * <p>
@@ -75,8 +77,38 @@ public class Logic
     public double calculate(int size, int count) {
 
         // TODO -- add your code here
+        double twobirthday = 0;
+        for (int i = 1 ; i<= count ; i++) {
+            twobirthday = twobirthday + checkDuplicate(size, i);
+        }
+
+        double percent;
+        percent = (twobirthday * 100.0) / count;
+
+        return percent;
 
     }
 
     // TODO - add your code here
+    /**
+     * Method to check if two person have same birthday
+     * return 1 if it has
+     * returns 0 if no two person has same birthday
+     */
+    public int checkDuplicate(int size, int simulationNo) {
+        Random rand = new Random(simulationNo);
+        int[] Days = new int[365];
+        int bDate;
+        for (int i=0 ; i < size ; i++) {
+            bDate = rand.nextInt(365);
+
+            if (Days[bDate] != 0) {
+                return 1;
+            }
+            else {
+                Days[bDate] = Days[bDate] + 1;
+            }
+        }
+        return 0;
+    }
 }
