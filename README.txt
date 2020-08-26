@@ -1,0 +1,1 @@
+This repo has all the assignments of the online course "Java For Android" available on coursera.
